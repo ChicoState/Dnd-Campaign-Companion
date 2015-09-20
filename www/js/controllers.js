@@ -52,5 +52,11 @@ angular.module('starter.controllers', [])
   ];
 })
 
+.controller('FeatsCtrl', function($scope) {
+  $scope.featss = [
+    { title: 'Feat 1', id:1 }
+  ];
+})
+
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });
