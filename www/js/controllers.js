@@ -52,5 +52,11 @@ angular.module('starter.controllers', [])
   ];
 })
 
+.controller('MoneyCtrl', function($scope) {
+  $scope.money = [
+  {title: 'Copper', id:1}
+  ];
+})
+
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });
