@@ -51,43 +51,36 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 		}
 	})
 
-	.state('app.feats', {
-		url: '/feats',
-		views: {
-			'menuContent': {
-				templateUrl: 'templates/feats.html',
-				controller: 'FeatsCtrl'
-			}
-		}
-	})
+  .state('app.single', {
+	url: '/playlists/:playlistId',
+	views: {
+	  'menuContent': {
+		templateUrl: 'templates/playlist.html',
+		templateUrl: 'templates/playlists.html',
+		controller: 'PlaylistCtrl'
+	  }
+	}
+  })
 
-	.state('app.browse', {
-			url: '/browse',
-			views: {
-				'menuContent': {
-					templateUrl: 'templates/browse.html'
-				}
-			}
-		})
-	.state('app.playlists', {
-		url: '/playlists',
-		views: {
-			'menuContent': {
-				templateUrl: 'templates/playlists.html',
-				controller: 'PlaylistsCtrl'
-			}
-		}
-	})
-
-	.state('app.single', {
-		url: '/playlists/:playlistId',
-		views: {
-			'menuContent': {
-				templateUrl: 'templates/playlist.html',
-				controller: 'PlaylistCtrl'
-			}
-		}
-	});
-	// if none of the above states are matched, use this as the fallback
-	$urlRouterProvider.otherwise('/app/playlists');
+  .state('app.money', {
+	url: '/money',
+	views:{
+	  'menuContent':{
+		templateUrl: 'templates/money.html',
+		controller: 'MoneyCtrl'
+	  }
+	}
+  })
+  
+  .state('app.feats', {
+	url: '/feats',
+	views: {
+	  'menuContent': {
+	 templateUrl: 'templates/feats.html',
+	 controller: 'FeatsCtrl'
+	  }
+	}
+  })
+  // if none of the above states are matched, use this as the fallback
+  $urlRouterProvider.otherwise('/app/abilities');
 });

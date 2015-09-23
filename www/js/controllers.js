@@ -55,6 +55,11 @@ angular.module('starter.controllers', [])
   ];
 })
 
+.controller('MoneyCtrl', function($scope) {
+  $scope.money = [
+  {title: 'Copper', id:1}
+  ];
+})
 .controller('FeatsCtrl', function($scope) {
   $scope.feats = [
     { title: 'Feat 1', id:1 }
