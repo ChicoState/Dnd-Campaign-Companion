@@ -53,7 +53,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('FeatsCtrl', function($scope) {
-  $scope.featss = [
+  $scope.feats = [
     { title: 'Feat 1', id:1 }
   ];
 })
