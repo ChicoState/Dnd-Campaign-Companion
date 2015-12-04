@@ -41,4 +41,15 @@ angular.module('app.controllers', [])
             });
 
 
+        }])
+    .controller('CombatCtrl', [
+        '$state', '$scope', 'UserService',   // <-- controller dependencies
+        function ($state, $scope, UserService) {
+
+            debugger;
+            UserService.currentUser().then(function (_user) {
+                $scope.user = _user;
+            });
+
+
         }]);
