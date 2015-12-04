@@ -1,57 +1,44 @@
+/**
+ * beginnings of a controller to login to system
+ * here for the purpose of showing how a service might
+ * be used in an application
+ */
 angular.module('app.controllers', [])
+    .controller('ListDetailCtrl', [
+        '$state', '$scope', '$stateParams', 'UserService',   // <-- controller dependencies
+        function ($state, $scope, $stateParams, UserService) {
 
-	.controller('AbilitiesCtrl', [
-		'$state', '$scope', 'UserService',   // <-- controller dependencies
-		function ($state, $scope, UserService) {
+            $scope.index = $stateParams.itemId;
 
-			$scope.doLogoutAction = function () {
-				UserService.logout().then(function () {
+        }])
+    .controller('ListCtrl', [
+        '$state', '$scope', 'UserService',   // <-- controller dependencies
+        function ($state, $scope, UserService) {
 
-					// transition to next state
-					$state.go('app.login');
-
-				}, function (_error) {
-					alert("error logging in " + _error.debug);
-				})
-			};
+            $scope.dataList = ["One", "Two", "Three"];
 
 
-		}])
+            $scope.doLogoutAction = function () {
+                UserService.logout().then(function () {
 
-	.controller('MoneyCtrl', function($scope) {
-		$scope.money = [
-		{title: 'Copper', id:1}
-		];
-	})
+                    // transition to next state
+                    $state.go('app-login');
 
-	.controller('FeatsCtrl', function($scope) {
-		$scope.feats = [
-			{ title: 'Feat 1', id:1 }
-		];
-	})
+                }, function (_error) {
+                    alert("error logging in " + _error.debug);
+                })
+            };
 
-	.controller('PlaylistCtrl', function($scope, $stateParams) {
-	})
 
-	/*
-		Nic Put Controller's here
-	*/
+        }])
+    .controller('AccountCtrl', [
+        '$state', '$scope', 'UserService',   // <-- controller dependencies
+        function ($state, $scope, UserService) {
 
-	/*
-		Jacob Put Controller's here
-	*/
+            debugger;
+            UserService.currentUser().then(function (_user) {
+                $scope.user = _user;
+            });
 
-	/*
-		Phillip Put Controller's here
-	*/
 
-	/*
-		Jake Put Controller's here
-	*/
-
-	/*
-		Enda put Controller's here
-	*/
-
-	.controller('CharacterCtrl', function($scope, $stateParams) {
-	});
+        }]);
