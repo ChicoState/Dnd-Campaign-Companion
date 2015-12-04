@@ -21,8 +21,8 @@ angular.module('starter',
  * parse constants
  */
     .value('ParseConfiguration', {
-        applicationId: "xxxxxxxx",
-        javascriptKey: "yyyyyyyyy"
+        applicationId: "ZRYdicNbaWchGApCAXj4iU3dXmbmLvEmMs8YEFEK",
+        javascriptKey: "rjc0stBqHTeeZ4trKzfWHksNsliMOXH10ZHWCliU"
     })
 /**
  *
