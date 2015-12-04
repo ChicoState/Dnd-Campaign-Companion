@@ -29,14 +29,14 @@ angular.module('starter',
 		// Each state's controller can be found in controllers.js
 		$stateProvider
 			// create account state
-		.state('app-signup', {
+		.state('app.signup', {
 			url: "/signup",
 			templateUrl: "templates/user/signup.html",
 			controller: "SignUpController"
 		})
 		// login state that is needed to log the user in after logout
 		// or if there is no user object available
-		.state('app-login', {
+		.state('app.login', {
 			url: "/login",
 			templateUrl: "templates/user/login.html",
 			controller: "LoginController"
@@ -52,6 +52,8 @@ angular.module('starter',
 				resolve: {
 				user: function (UserService) {
 					var value = UserService.init();
+					console.log('got to reseolve')
+					
 					return value;
 				}
 			}
@@ -96,7 +98,7 @@ angular.module('starter',
 				}
 		});
 		// if none of the above states are matched, use this as the fallback
-		$urlRouterProvider.otherwise('/app/character');
+		$urlRouterProvider.otherwise('/app/abilities');
 	})
 	.run(function($ionicPlatform, $rootScope, $state) {
 
@@ -111,7 +113,7 @@ angular.module('starter',
 				if (error && error.error === "noUser") {
 					event.preventDefault();
 
-					$state.go('app-login', {});
+					$state.go('app.login', {});
 				}
 			});
 

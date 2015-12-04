@@ -23,6 +23,7 @@ angular.module('user.services', [])
 					}
 
 					var currentUser = Parse.User.current();
+					console.log('currentUser', currentUser);
 					if (currentUser) {
 						return $q.when(currentUser);
 					} else {

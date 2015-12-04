@@ -1,7 +1,22 @@
 angular.module('app.controllers', [])
 
-	.controller('AbilitiesCtrl', function($scope) {
-	})
+	.controller('AbilitiesCtrl', [
+		'$state', '$scope', 'UserService',   // <-- controller dependencies
+		function ($state, $scope, UserService) {
+
+			$scope.doLogoutAction = function () {
+				UserService.logout().then(function () {
+
+					// transition to next state
+					$state.go('app.login');
+
+				}, function (_error) {
+					alert("error logging in " + _error.debug);
+				})
+			};
+
+
+		}])
 
 	.controller('MoneyCtrl', function($scope) {
 		$scope.money = [
