@@ -41,4 +41,14 @@ angular.module('app.controllers', [])
             });
 
 
-        }]);
+        }])
+
+    .controller('SpecialCtrl', [
+        '$state', '$scope', 'UserService',
+	function ($state, $scope, UserService){
+		debugger;
+		UserService.currentUser().then(function(_user) {
+			$scope.user = _user;
+		});
+		
+	}]);
