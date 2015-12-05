@@ -1,15 +1,32 @@
 <ion-view title="Special Abilities">
+    <ion-nav-buttons side="left">
+	<button class="button">
+	    Save
+	</button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+	<button class="button" ng-click="doLogoutAction()">
+	    Logout
+	</button>
+    </ion-nav-buttons>
     <ion-content class="padding">
-        <ion-item>
-            Spells
-        </ion-item>
-	<ion-item>
-	    Feats
-	</ion-item>
-	<ion-item>
-	    Special Abilities
-	</ion-item
+	<ion-list can-swipe="true">
+            <ion-item class="item-button-right">
+                <font size="7">Spells</font>
+		<button class="button" ng-click="addSpell()">
+		    <i class="icon ion-plus-circled"></i>
+		</button>
+            </ion-item>
+	    <ion-item ng-repeat= "item in spells" item="data">
+	    <font size="5"><b>{{item.title}}</b></font><br>
+		{{item.description}}
+	    </ion-item>
+	    <ion-item>
+	        Feats
+	    </ion-item>
+	    <ion-item>
+	        Special Abilities
+	    </ion-item
+	</ion-list>
     </ion-content>
 </ion-view>
-
-
