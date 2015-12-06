@@ -53,12 +53,12 @@ angular.module('app.controllers', [])
 		$scope.feats = [];
 		$scope.spells = [];
 		
-		$scope.addSpell = function() {
-		    $scope.data = { }
+		$scope.abiladd = function(type) {
+		    $scope.data = {type }
 		    var mypop =
 			$ionicPopup.show({
 			    template: 'Title: <input type="text" ng-model="data.title"> <br> Description: <textarea name="desc" cols="40" rows="5" maxlength="200" ng-model="data.description" style="height: 130px; min-height:130px; max-height:130px;">',
-			    title: 'Add Spell',
+			    title: 'Add Ability',
 			    cssClass: 'addAbil',
 			    scope: $scope,
 			    buttons: [
@@ -77,7 +77,13 @@ angular.module('app.controllers', [])
 			});
 			mypop.then(function(res){
 			    if(res){
-				$scope.spells.push(res);
+				if(res.type == 1){
+				    $scope.spells.push(res);
+				} else if(res.type==2){
+				    $scope.feats.push(res);
+				} else if(res.type==3){
+				    $scope.abil.push(res);
+				} 	
 			    }
 			});
 		};

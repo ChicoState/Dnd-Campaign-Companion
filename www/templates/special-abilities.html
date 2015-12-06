@@ -1,4 +1,4 @@
-<ion-view title="Special Abilities">
+<ion-view title="Abilities">
     <ion-nav-buttons side="left">
 	<button class="button">
 	    Save
@@ -12,21 +12,35 @@
     <ion-content class="padding">
 	<ion-list can-swipe="true">
             <ion-item class="item-button-right">
-                <font size="7">Spells</font>
-		<button class="button" ng-click="addSpell()">
+                <font size="6">Spells</font>
+		<button class="button" ng-click="abiladd(1)">
 		    <i class="icon ion-plus-circled"></i>
 		</button>
             </ion-item>
 	    <ion-item ng-repeat= "item in spells" item="data">
-	    <font size="5"><b>{{item.title}}</b></font><br>
+		<font size="5"><b>{{item.title}}</b></font><br>
 		{{item.description}}
 	    </ion-item>
-	    <ion-item>
-	        Feats
+	    <ion-item class="item-button-right">
+	        <font size="6">Feats</font>
+		<button class="button" ng-click="abiladd(2)">
+		    <i class="icon ion-plus-circled"></i>
+		</button>
 	    </ion-item>
-	    <ion-item>
-	        Special Abilities
-	    </ion-item
+	    <ion-item ng-repeat= "item in feats" item="data">
+		<font size="5"><b>{{item.title}}</b></font><br>
+		{{item.description}}
+	    </ion-item>
+	    <ion-item class="item-button-right">
+		<font size="6">Special Abilities</font>
+		<button class="button" ng-click="abiladd(3)">
+		    <i class="icon ion-plus-circled"></i>
+		</button>
+	    </ion-item>
+	    <ion-item ng-repeat= "item in abil" item="data">
+		<font size="5"><b>{{item.title}}</b></font><br>
+		{{item.description}}
+	    </ion-item> 
 	</ion-list>
     </ion-content>
 </ion-view>
