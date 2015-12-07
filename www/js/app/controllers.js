@@ -39,6 +39,8 @@ angular.module('app.controllers', [])
             UserService.currentUser().then(function (_user) {
                 $scope.user = _user;
             });
-
-
         }]);
+    .controller('InventoryCtrl', [
+        ''
+        });
+    }]);
