@@ -54,7 +54,7 @@ angular.module('app.controllers', [])
 		$scope.spells = [];
 		
 		$scope.abiladd = function(type) {
-		    $scope.data = {type }
+		    $scope.data = {type}
 		    var mypop =
 			$ionicPopup.show({
 			    template: 'Title: <input type="text" ng-model="data.title"> <br> Description: <textarea name="desc" cols="40" rows="5" maxlength="200" ng-model="data.description" style="height: 130px; min-height:130px; max-height:130px;">',
