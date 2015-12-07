@@ -105,7 +105,7 @@ angular.module('starter',
              });
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/tab/list');
+        $urlRouterProvider.otherwise('/tab/combat');
 
     })
     .run(function ($ionicPlatform, $rootScope, $state) {
