@@ -91,7 +91,17 @@ angular.module('starter',
                         controller: 'AccountCtrl'
                     }
                 }
-            });
+            })
+	    .state('tab.special', {
+		url: '/abilities',
+		cache: false,
+		views: {
+		    'tab-special': {
+			templateUrl: 'templates/special-abilities.html',
+			controller: 'SpecialCtrl'
+		    }
+		}
+	    });
 
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/tab/list');

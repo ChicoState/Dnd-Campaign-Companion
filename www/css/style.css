@@ -1,1 +1,18 @@
 /* Empty. Add your own CSS if you like */
+
+.addAbil.popup-container .popup {
+	height: 60%;
+	width: 75%;
+	padding: 10px;
+	overflow: auto;
+}
+.popup-body {
+	top: 40px;
+	padding: 10px;
+	overflow: auto;
+	height:100%;
+}
+
+textarea{
+	resize: none;
+}
