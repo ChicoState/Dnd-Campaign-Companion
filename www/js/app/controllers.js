@@ -69,6 +69,7 @@ angular.module('app.controllers', [])
                             Grapple: object.attributes.Grapple
                         });
                         console.log($scope.combat[0]);
+                        $state.go($state.current, {}, {});
                     }
                 });
             });
