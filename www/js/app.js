@@ -91,7 +91,17 @@ angular.module('starter',
                         controller: 'AccountCtrl'
                     }
                 }
-            });
+            })
+        .state('tab.Inventory', {
+        url: '/Inventory',
+        cache: false,
+        views: {
+            'tab-Inventory': {
+            templateUrl: 'templates/tab-Inventory.html',
+            controller: 'InventoryCtrl'
+            }
+        }
+        });
 
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/tab/list');

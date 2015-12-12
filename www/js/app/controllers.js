@@ -40,7 +40,47 @@ angular.module('app.controllers', [])
                 $scope.user = _user;
             });
         }]);
+
     .controller('InventoryCtrl', [
-        ''
+        '$state', '$scope', 'UserService', '$ionicPopup',
+    function ($state, $scope, UserService, $ionicPopup){
+        UserService.currentUser().then(function(_user) {
+            $scope.user = _user;
         });
-    }]);
+        $scope.items = [];
+        $scope.gear = [];
+        
+        $scope.abiladd = function(type) {
+            $scope.data = {type}
+            var mypop =
+            $ionicPopup.show({
+                template: 'Title: <input type="text" ng-model="data.title"> <br> Description: <textarea name="desc" cols="40" rows="5" maxlength="200" ng-model="data.description" style="height: 130px; min-height:130px; max-height:130px;">',
+                title: 'Add Item',
+                cssClass: 'additem',
+                scope: $scope,
+                buttons: [
+                {text: 'Cancel' },
+                {text: 'Save',
+                 type: 'button-positive',
+                 onTap: function(e) {
+                    if((!$scope.data.title)||(!$scope.data.description)){
+                        e.preventDefault();
+                    } else{
+                        return $scope.data;
+                    }
+                    }
+                },
+                ]
+            });
+            mypop.then(function(res){
+                if(res){
+                if(res.type == 1){
+                    $scope.items.push(res);
+                } else if(res.type==2){
+                    $scope.gear.push(res);
+                }
+                }
+            });
+        };
+    }]
+);
