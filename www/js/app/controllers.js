@@ -46,6 +46,17 @@ angular.module('app.controllers', [])
         '$state', '$scope', 'UserService',   // <-- controller dependencies
         function ($state, $scope, UserService) {
 
+            $scope.doLogoutAction = function () {
+                UserService.logout().then(function () {
+
+                    // transition to next state
+                    $state.go('app-login');
+
+                }, function (_error) {
+                    alert("error logging in " + _error.debug);
+                })
+            };
+
             $scope.combat = [];
             UserService.currentUser().then(function (_user) {
                 $scope.user = _user;
