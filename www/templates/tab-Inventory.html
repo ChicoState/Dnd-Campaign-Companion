@@ -1,0 +1,46 @@
+<ion-view title="Inventory">
+    <ion-nav-buttons side="left">
+	<button class="button">
+	    Save
+	</button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+	<button class="button" ng-click="doLogoutAction()">
+	    Logout
+	</button>
+    </ion-nav-buttons>
+    <ion-content class="padding">
+	<ion-list can-swipe="true">
+            <ion-item class="item-button-right">
+                <font size="6">Items</font>
+		<button class="button" ng-click="abiladd(1)">
+		    <i class="icon ion-plus-circled"></i>
+		</button>
+            </ion-item>
+	    <ion-item ng-repeat= "item in Items" item="data">
+		<font size="5"><b>{{item.title}}</b></font><br>
+		{{item.description}}
+	    </ion-item>
+	    <ion-item class="item-button-right">
+	        <font size="6">Gear</font>
+		<button class="button" ng-click="abiladd(2)">
+		    <i class="icon ion-plus-circled"></i>
+		</button>
+	    </ion-item>
+	    <ion-item ng-repeat= "item in Gear" item="data">
+		<font size="5"><b>{{item.title}}</b></font><br>
+		{{item.description}}
+	    </ion-item>
+	    <ion-item class="item-button-right">
+		<font size="6">Special Abilities</font>
+		<button class="button" ng-click="abiladd(3)">
+		    <i class="icon ion-plus-circled"></i>
+		</button>
+	    </ion-item>
+	    <ion-item ng-repeat= "item in abil" item="data">
+		<font size="5"><b>{{item.title}}</b></font><br>
+		{{item.description}}
+	    </ion-item> 
+	</ion-list>
+    </ion-content>
+</ion-view>
