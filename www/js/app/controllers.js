@@ -49,9 +49,13 @@ angular.module('app.controllers', [])
 		UserService.currentUser().then(function(_user) {
 			$scope.user = _user;
 		});
+		
 		$scope.abil = [];
 		$scope.feats = [];
 		$scope.spells = [];
+		
+		$scope.shouldShowDelete = true;
+		$scope.listCanSwipe = true;	
 		
 		$scope.abiladd = function(type) {
 		    $scope.data = {type}
