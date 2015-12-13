@@ -1,6 +1,6 @@
 <ion-view title="Character">
     <ion-nav-buttons side="left">
-        <button class="button" ng-click="save()">
+        <button class="button" ng-click="characterSave()">
             Save
         </button>
     </ion-nav-buttons>
@@ -14,33 +14,73 @@
             <div class="col-xs-8">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Character Name</span>
-                    <input type="tel" value="{{character[0].characterName}}" placeholder="Rob Hobble" /> 
+                    <input type="text" ng-model="character[0].characterName" placeholder="Rob Hobble" /> 
                 </label>
             </div>
             <div class="col-xs-4">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Race</span>
-                    <input type="tel" value="{{character[0].race}}"placeholder="Human">
+                    <input type="text" ng-model="character[0].race"placeholder="Human">
                 </label>
             </div>
         </div>
         <div class="row">
-           <div class="col-xs-4">
+           <div class="col-xs-5">
                 <label class="item item-input item-stacked-label">
-                    <span class="input-label">Allignment</span>
-                    <input type="tel" value="{{character[0].allignment}}" placeholder="Chaotic Neutral">
+                    <span class="input-label">Alignment</span>
+                    <input type="text" ng-model="character[0].alignment" placeholder="Chaotic Neutral">
                 </label>
             </div>
             <div class="col-xs-4">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Class</span>
-                    <input type="tel" value="{{character[0].class}}" placeholder="Fighter">
+                    <input type="text" ng-model="character[0].class" placeholder="Fighter">
+                </label>
+            </div>
+            <div class="col-xs-3">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Level</span>
+                    <input type="tel" ng-model="character[0].level" placeholder="5">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Strength</span>
+                    <input type="tel" ng-model="character[0].strength" placeholder="5">
                 </label>
             </div>
             <div class="col-xs-4">
                 <label class="item item-input item-stacked-label">
-                    <span class="input-label">Level</span>
-                    <input type="tel" value="{{character[0].level}}" placeholder="5">
+                    <span class="input-label">Dexterity</span>
+                    <input type="tel" ng-model="character[0].dexterity" placeholder="5">
+                </label>
+            </div>
+            <div class="col-xs-4">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Constitution</span>
+                    <input type="tel" ng-model="character[0].constitution" placeholder="5">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Intelligence</span>
+                    <input type="tel" ng-model="character[0].intelligence" placeholder="5">
+                </label>
+            </div>
+            <div class="col-xs-4">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Wisdom</span>
+                    <input type="tel" ng-model="character[0].wisdom" placeholder="5">
+                </label>
+            </div>
+            <div class="col-xs-4">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Charisma</span>
+                    <input type="tel" ng-model="character[0].charisma" placeholder="5">
                 </label>
             </div>
         </div>
