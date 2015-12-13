@@ -77,7 +77,13 @@ angular.module('app.controllers', [])
                             object.set("BaseAttack", parseInt($scope.combat[0].BaseA, 10));
                             object.set("Grapple", parseInt($scope.combat[0].Grapple, 10));
                             object.set("Attack", $scope.combat[0].Attack);
-                            console.log(object)
+                            object.set("AttackBonus", $scope.combat[0].AttackBonus);
+                            object.set("Damage", $scope.combat[0].Damage);
+                            object.set("Critical", $scope.combat[0].Critical);
+                            object.set("Range", $scope.combat[0].Range);
+                            object.set("Type", $scope.combat[0].Type);
+                            object.set("Notes", $scope.combat[0].Notes);
+                            console.log(object);
                             object.save();
                             $state.go($state.current, {}, {});
                         }
@@ -98,9 +104,11 @@ angular.module('app.controllers', [])
                 query.find({
                     success: function (results) {
                         if (!results[0]) {
+                            var array = [];
                             var CombatObject = Parse.Object.extend("Combat");
                             var c = new CombatObject();
                             c.set("username", $scope.user.attributes.username);
+                            c.set("Attack", array);
                             c.save();
                         }
                         else {
@@ -117,7 +125,13 @@ angular.module('app.controllers', [])
                                 Will: object.attributes.Will,
                                 BaseA: object.attributes.BaseAttack,
                                 Grapple: object.attributes.Grapple,
-                                Attack: object.attributes.Attack
+                                Attack: object.attributes.Attack,
+                                AttackBonus: object.attributes.AttackBonus,
+                                Damage: object.attributes.Damage,
+                                Critical: object.attributes.Critical,
+                                Range: object.attributes.Range,
+                                Notes: object.attributes.Notes
+                                
                             });
                         }
                         console.log($scope.combat[0]);
