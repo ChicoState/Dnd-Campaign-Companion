@@ -1,0 +1,114 @@
+<ion-view title="Combat">
+    <ion-nav-buttons side="left">
+        <button class="button" ng-click="combatSave()">
+            Save
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button" ng-click="doLogoutAction()">
+            Logout
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="padding">
+        <div class="row">
+            <div class="col-xs-4">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">HP</span>
+                    <input type="tel" ng-model="combat[0].HP"/> 
+                </label>
+            </div>
+            <div class="col-xs-4">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">AC</span>
+                    <input type="tel" ng-model="combat[0].AC">
+                </label>
+            </div>
+            <div class="col-xs-4">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Initiative</span>
+                    <input type="tel" ng-model="combat[0].Init">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Fortitude</span>
+                    <input type="tel" ng-model="combat[0].Fort">
+                </label>
+            </div>
+            <div class="col-xs-4">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Reflex</span>
+                    <input type="tel" ng-model="combat[0].Reflex">
+                </label>
+            </div>
+            <div class="col-xs-4">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Will</span>
+                    <input type="tel" ng-model="combat[0].Will">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Grapple</span>
+                    <input type="tel" ng-model="combat[0].Grapple">
+                </label>
+            </div>
+            <div class="col-xs-6">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Base Attack</span>
+                    <input type="tel" ng-model="combat[0].BaseA">
+                </label>
+            </div>
+        </div>
+        <br />
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Attack</span>
+            <input type="text" ng-model="combat[0].Attack[0]" />
+        </label>
+        <div class="row">
+            <div class="col-xs-4">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Attack Bonus</span>
+                    <input type="text" ng-model="combat[0].Attack[1]" />
+                </label>
+            </div>
+            <div class="col-xs-4">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Damage</span>
+                    <input type="text" ng-model="combat[0].Attack[2]"/>
+                </label>
+            </div>
+            <div class="col-xs-4">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Critical</span>
+                    <input type="text" ng-model="combat[0].Attack[3]" />
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col=xs=3">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Range</span>
+                    <input type="text" ng-model="combat[0].Attack[4]" />
+                </label>
+            </div>
+            <div class="col-xs-3">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Type</span>
+                    <input type="text" ng-model="combat[0].Attack[5]" />
+                </label>
+            </div>
+            <div class="col-xs-6">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Notes</span>
+                    <input type="text" ng-model="combat[0].Attack[6]" />
+                </label>
+            </div>
+        </div>
+        
+    </ion-content>
+</ion-view>
