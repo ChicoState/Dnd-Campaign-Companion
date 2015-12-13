@@ -8,7 +8,6 @@ angular.module('user.controllers', [])
         '$state', '$scope', 'UserService',   // <-- controller dependencies
         function ($state, $scope, UserService) {
 
-
             // ng-model holding values from view/html
             $scope.creds = {
                 username: "adminuser",
@@ -38,7 +37,7 @@ angular.module('user.controllers', [])
                         alert("login success " + _response.attributes.username);
 
                         // transition to next state
-                        $state.go('tab.list');
+                        $state.go('tab.character');
 
                     }, function (_error) {
                         alert("error logging in " + _error.message);
@@ -63,7 +62,7 @@ angular.module('user.controllers', [])
 
                     alert("Success Creating User Account ");
 
-                    $state.go('tab.list', {});
+                    $state.go('tab.character', {});
 
                 }, function (_error) {
                     alert("Error Creating User Account " + _error.debug)
