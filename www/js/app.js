@@ -63,25 +63,15 @@ angular.module('starter',
             })
 
             // Each tab has its own nav history stack:
-            .state('tab.list', {
-                url: '/list',
+            .state('tab.character', {
+                url: '/character',
                 views: {
-                    'tab-list': {
-                        templateUrl: 'templates/tab-list.html',
-                        controller: 'ListCtrl'
+                    'tab-character': {
+                        templateUrl: 'templates/tab-character.html',
+                        controller: 'CharacterCtrl'
                     }
                 }
             })
-            .state('tab.list-detail', {
-                url: '/list/:itemId',
-                views: {
-                    'tab-list': {
-                        templateUrl: 'templates/list-detail.html',
-                        controller: 'ListDetailCtrl'
-                    }
-                }
-            })
-
             .state('tab.account', {
                 url: '/account',
                 cache: false,
@@ -94,7 +84,7 @@ angular.module('starter',
             });
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/tab/list');
+        $urlRouterProvider.otherwise('/tab/character');
 
     })
     .run(function ($ionicPlatform, $rootScope, $state) {
