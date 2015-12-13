@@ -91,6 +91,16 @@ angular.module('app.controllers', [])
 			    }
 			});
 		};
+		$scope.doLogoutAction = function () {
+                    UserService.logout().then(function () {
+
+                    // transition to next state
+                    $state.go('app-login');
+
+                }, function (_error) {
+                    alert("error logging in " + _error.debug);
+                })
+            };
 	}]
 );
 
