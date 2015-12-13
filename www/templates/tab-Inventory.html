@@ -10,28 +10,47 @@
 	</button>
     </ion-nav-buttons>
     <ion-content class="padding">
-	<ion-list can-swipe="true">
+	<ion-list>
             <ion-item class="item-button-right">
-                <font size="6">Items</font>
-		<button class="button" ng-click="abiladd(1)">
+                <font size="6"><b>Items</b></font>
+		<button class="button" ng-click="itemadd(1)">
 		    <i class="icon ion-plus-circled"></i>
 		</button>
             </ion-item>
-	    <ion-item ng-repeat= "item in Items" item="data">
+	    <ion-item class="item-button-right" ng-repeat= "item in items" item="data">
 		<font size="5"><b>{{item.title}}</b></font><br>
+		<button class="button" ng-click="items.splice(spells.indexOf(item), 1);">
+		    <i class="icon ion-minus-circled"></i>
+		</button>		
 		{{item.description}}
 	    </ion-item>
 	    <ion-item class="item-button-right">
-	        <font size="6">Gear</font>
-		<button class="button" ng-click="abiladd(2)">
+	        <font size="6"><b>Gear</b></font>
+		<button class="button" ng-click="itemadd(2)">
 		    <i class="icon ion-plus-circled"></i>
 		</button>
 	    </ion-item>
-	    <ion-item ng-repeat= "item in Gear" item="data">
+	    <ion-item class="item-button-right" ng-repeat= "item in gear" item="data">
 		<font size="5"><b>{{item.title}}</b></font><br>
+		<button class="button" ng-click="gear.splice(feats.indexOf(item), 1);">
+		    <i class="icon ion-minus-circled"></i>
+		</button>
 		{{item.description}}
-	    </ion-item>
- 
+	    
 	</ion-list>
+			<div class="list">
+	<label class="item item-input item-stacked-label">
+		<span class="input-label">Copper</span>
+		<input type="tel" placeholder="0">
+	</label>
+	<label class="item item-input item-stacked-label">
+		<span class="input-label">Silver</span>
+		<input type="tel" placeholder="0">
+	</label>
+	<label class="item item-input item-stacked-label">
+		<span class="input-label">Gold</span>
+		<input type="tel" placeholder="0">
+	</label>
+</div>
     </ion-content>
 </ion-view>
