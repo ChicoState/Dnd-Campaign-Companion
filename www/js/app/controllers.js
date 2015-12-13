@@ -61,8 +61,8 @@ angular.module('app.controllers', [])
                 UserService.currentUser().then(function (_user) {
                     $scope.user = _user;
                     $scope.save = [];
-                    var stuff = Parse.Object.extend("Combat");
-                    var query = new Parse.Query(stuff);
+                    var parameter = Parse.Object.extend("Combat");
+                    var query = new Parse.Query(parameter);
                     query.equalTo("username", $scope.user.attributes.username)
                     query.find({
                         success: function (results) {
