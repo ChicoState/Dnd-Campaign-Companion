@@ -92,12 +92,12 @@ angular.module('starter',
                     }
                 }
             })
-        .state('tab.Inventory', {
-        url: '/Inventory',
+        .state('tab.inventory', {
+        url: '/inventory',
         cache: false,
         views: {
-            'tab-Inventory': {
-            templateUrl: 'templates/tab-Inventory.html',
+            'tab-inventory': {
+            templateUrl: 'templates/tab-inventory.html',
             controller: 'InventoryCtrl'
             }
         }
