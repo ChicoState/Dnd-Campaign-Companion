@@ -61,7 +61,6 @@ angular.module('app.controllers', [])
                 UserService.currentUser().then(function (_user) {
                     $scope.user = _user;
                     $scope.save = [];
-                    $scope.user = _user;
                     var stuff = Parse.Object.extend("Combat");
                     var query = new Parse.Query(stuff);
                     query.equalTo("username", $scope.user.attributes.username)
@@ -77,13 +76,14 @@ angular.module('app.controllers', [])
                             object.set("Will", parseInt($scope.combat[0].Will, 10));
                             object.set("BaseAttack", parseInt($scope.combat[0].BaseA, 10));
                             object.set("Grapple", parseInt($scope.combat[0].Grapple, 10));
+                            object.set("Attack", $scope.combat[0].Attack);
                             console.log(object)
                             object.save();
                             $state.go($state.current, {}, {});
                         }
                     });
                 });
-            }
+            };
 
             $scope.combat = [];
             UserService.currentUser().then(function (_user) {
@@ -116,7 +116,8 @@ angular.module('app.controllers', [])
                                 Reflex: object.attributes.Reflex,
                                 Will: object.attributes.Will,
                                 BaseA: object.attributes.BaseAttack,
-                                Grapple: object.attributes.Grapple
+                                Grapple: object.attributes.Grapple,
+                                Attack: object.attributes.Attack
                             });
                         }
                         console.log($scope.combat[0]);
