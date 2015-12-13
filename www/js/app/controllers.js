@@ -91,26 +91,41 @@ angular.module('app.controllers', [])
                 var combat = Parse.Object.extend("Combat");
                 var query = new Parse.Query(combat);
 
-                query.equalTo("username", $scope.user.attributes.username)
+                console.log($scope.user.attributes.username);
+
+                query.equalTo("username", $scope.user.attributes.username);
 
                 query.find({
-                    success: function (results){
-                        var object = results[0];
-                        console.log(object)
-                        $scope.combat.push({
-                            HP: object.attributes.HP,
-                            AC: object.attributes.AC,
-                            Init: object.attributes.initiative,
-                            Fort: object.attributes.Fortitude,
-                            Reflex: object.attributes.Reflex,
-                            Will: object.attributes.Will,
-                            BaseA: object.attributes.BaseAttack,
-                            Grapple: object.attributes.Grapple
-                        });
+                    success: function (results) {
+                        if (!results[0]) {
+                            var CombatObject = Parse.Object.extend("Combat");
+                            var c = new CombatObject();
+                            c.set("username", $scope.user.attributes.username);
+                            c.save();
+                        }
+                        else {
+                            console.log("success achieved");
+                            console.log(results);
+                            var object = results[0];
+                            console.log(object);
+                            $scope.combat.push({
+                                HP: object.attributes.HP,
+                                AC: object.attributes.AC,
+                                Init: object.attributes.initiative,
+                                Fort: object.attributes.Fortitude,
+                                Reflex: object.attributes.Reflex,
+                                Will: object.attributes.Will,
+                                BaseA: object.attributes.BaseAttack,
+                                Grapple: object.attributes.Grapple
+                            });
+                        }
                         console.log($scope.combat[0]);
                         $state.go($state.current, {}, {});
+                    },
+                    error: function (error) {
+                        console.log("Error achieved");
                     }
-                });
             });
+        });
 
-        }]);
+}]);
