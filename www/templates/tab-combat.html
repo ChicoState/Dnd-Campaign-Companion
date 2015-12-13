@@ -1,6 +1,6 @@
 <ion-view title="Combat">
     <ion-nav-buttons side="left">
-        <button class="button" ng-click="save()">
+        <button class="button" ng-click="combatSave()">
             Save
         </button>
     </ion-nav-buttons>
@@ -14,19 +14,19 @@
             <div class="col-xs-4">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">HP</span>
-                    <input type="tel" value="{{combat[0].HP}}" /> 
+                    <input type="tel" ng-model="combat[0].HP"/> 
                 </label>
             </div>
             <div class="col-xs-4">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">AC</span>
-                    <input type="tel" value="{{combat[0].AC}}">
+                    <input type="tel" ng-model="combat[0].AC">
                 </label>
             </div>
             <div class="col-xs-4">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Initiative</span>
-                    <input type="tel" value="{{combat[0].Init}}">
+                    <input type="tel" ng-model="combat[0].Init">
                 </label>
             </div>
         </div>
@@ -34,19 +34,19 @@
             <div class="col-xs-4">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Fortitude</span>
-                    <input type="tel" value="{{combat[0].Fort}}">
+                    <input type="tel" ng-model="combat[0].Fort">
                 </label>
             </div>
             <div class="col-xs-4">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Reflex</span>
-                    <input type="tel" value="{{combat[0].Reflex}}">
+                    <input type="tel" ng-model="combat[0].Reflex">
                 </label>
             </div>
             <div class="col-xs-4">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Will</span>
-                    <input type="tel" value="{{combat[0].Will}}">
+                    <input type="tel" ng-model="combat[0].Will">
                 </label>
             </div>
         </div>
@@ -54,13 +54,13 @@
             <div class="col-xs-6">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Grapple</span>
-                    <input type="tel" value="{{combat[0].Grapple}}">
+                    <input type="tel" ng-model="combat[0].Grapple">
                 </label>
             </div>
             <div class="col-xs-6">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Base Attack</span>
-                    <input type="tel" value="{{combat[0].BaseA}}">
+                    <input type="tel" ng-model="combat[0].BaseA">
                 </label>
             </div>
         </div>

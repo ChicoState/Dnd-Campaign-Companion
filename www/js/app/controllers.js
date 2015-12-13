@@ -57,6 +57,34 @@ angular.module('app.controllers', [])
                 })
             };
 
+            $scope.combatSave = function (_user) {
+                UserService.currentUser().then(function (_user) {
+                    $scope.user = _user;
+                    $scope.save = [];
+                    $scope.user = _user;
+                    var stuff = Parse.Object.extend("Combat");
+                    var query = new Parse.Query(stuff);
+                    query.equalTo("username", $scope.user.attributes.username)
+                    query.find({
+                        success: function (results) {
+                            var object = results[0];
+                            console.log($scope);
+                            object.set("HP", parseInt($scope.combat[0].HP, 10));
+                            object.set("AC", parseInt($scope.combat[0].AC, 10));
+                            object.set("initiative", parseInt($scope.combat[0].Init, 10));
+                            object.set("Fortitude", parseInt($scope.combat[0].Fort, 10));
+                            object.set("Reflex", parseInt($scope.combat[0].Reflex, 10));
+                            object.set("Will", parseInt($scope.combat[0].Will, 10));
+                            object.set("BaseAttack", parseInt($scope.combat[0].BaseA, 10));
+                            object.set("Grapple", parseInt($scope.combat[0].Grapple, 10));
+                            console.log(object)
+                            object.save();
+                            $state.go($state.current, {}, {});
+                        }
+                    });
+                });
+            }
+
             $scope.combat = [];
             UserService.currentUser().then(function (_user) {
                 $scope.user = _user;
