@@ -93,8 +93,6 @@ angular.module('starter',
         $rootScope.$on('$stateChangeError',
             function (event, toState, toParams, fromState, fromParams, error) {
 
-                debugger;
-
                 console.log('$stateChangeError ' + error && (error.debug || error.message || error));
 
                 // if the error is "noUser" the go to login state

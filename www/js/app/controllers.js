@@ -32,26 +32,6 @@ angular.module('app.controllers', [])
 
         }])
 
-    .controller('AccountCtrl', [
-        '$state', '$scope', 'UserService',   // <-- controller dependencies
-        function ($state, $scope, UserService) {
-
-            debugger;
-            UserService.currentUser().then(function (_user) {
-                $scope.user = _user;
-            });
-
-            $scope.doLogoutAction = function () {
-                UserService.logout().then(function () {
-                    // transition to next state
-                    $state.go('app-login');
-                }, function (_error) {
-                    alert("error logging in " + _error.debug);
-                })
-            };
-
-
-        }])
     .controller('CharacterCtrl', [
         '$state', '$scope', 'UserService',   // <-- controller dependencies
         function ($state, $scope, UserService) {
@@ -136,4 +116,19 @@ angular.module('app.controllers', [])
             }
 
 
+        }])
+    .controller('AccountCtrl', [
+        '$state', '$scope', 'UserService',   // <-- controller dependencies
+        function ($state, $scope, UserService) {
+            UserService.currentUser().then(function (_user) {
+                $scope.user = _user;
+            });
+            $scope.doLogoutAction = function () {
+                UserService.logout().then(function () {
+                    // transition to next state
+                    $state.go('app-login');
+                }, function (_error) {
+                    alert("error logging in " + _error.debug);
+                })
+            };
         }]);
