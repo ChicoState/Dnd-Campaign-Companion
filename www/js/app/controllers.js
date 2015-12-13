@@ -41,4 +41,92 @@ angular.module('app.controllers', [])
             });
 
 
-        }]);
+        }])
+    .controller('CombatCtrl', [
+        '$state', '$scope', 'UserService',   // <-- controller dependencies
+        function ($state, $scope, UserService) {
+
+            $scope.doLogoutAction = function () {
+                UserService.logout().then(function () {
+
+                    // transition to next state
+                    $state.go('app-login');
+
+                }, function (_error) {
+                    alert("error logging in " + _error.debug);
+                })
+            };
+
+            $scope.combatSave = function (_user) {
+                UserService.currentUser().then(function (_user) {
+                    $scope.user = _user;
+                    $scope.save = [];
+                    var parameter = Parse.Object.extend("Combat");
+                    var query = new Parse.Query(parameter);
+                    query.equalTo("username", $scope.user.attributes.username)
+                    query.find({
+                        success: function (results) {
+                            var object = results[0];
+                            console.log($scope);
+                            object.set("HP", parseInt($scope.combat[0].HP, 10));
+                            object.set("AC", parseInt($scope.combat[0].AC, 10));
+                            object.set("initiative", parseInt($scope.combat[0].Init, 10));
+                            object.set("Fortitude", parseInt($scope.combat[0].Fort, 10));
+                            object.set("Reflex", parseInt($scope.combat[0].Reflex, 10));
+                            object.set("Will", parseInt($scope.combat[0].Will, 10));
+                            object.set("BaseAttack", parseInt($scope.combat[0].BaseA, 10));
+                            object.set("Grapple", parseInt($scope.combat[0].Grapple, 10));
+                            object.set("Attack", $scope.combat[0].Attack);
+                            console.log(object)
+                            object.save();
+                            $state.go($state.current, {}, {});
+                        }
+                    });
+                });
+            };
+
+            $scope.combat = [];
+            UserService.currentUser().then(function (_user) {
+                $scope.user = _user;
+                var combat = Parse.Object.extend("Combat");
+                var query = new Parse.Query(combat);
+
+                console.log($scope.user.attributes.username);
+
+                query.equalTo("username", $scope.user.attributes.username);
+
+                query.find({
+                    success: function (results) {
+                        if (!results[0]) {
+                            var CombatObject = Parse.Object.extend("Combat");
+                            var c = new CombatObject();
+                            c.set("username", $scope.user.attributes.username);
+                            c.save();
+                        }
+                        else {
+                            console.log("success achieved");
+                            console.log(results);
+                            var object = results[0];
+                            console.log(object);
+                            $scope.combat.push({
+                                HP: object.attributes.HP,
+                                AC: object.attributes.AC,
+                                Init: object.attributes.initiative,
+                                Fort: object.attributes.Fortitude,
+                                Reflex: object.attributes.Reflex,
+                                Will: object.attributes.Will,
+                                BaseA: object.attributes.BaseAttack,
+                                Grapple: object.attributes.Grapple,
+                                Attack: object.attributes.Attack
+                            });
+                        }
+                        console.log($scope.combat[0]);
+                        $state.go($state.current, {}, {});
+                    },
+                    error: function (error) {
+                        console.log("Error achieved");
+                    }
+            });
+        });
+
+}]);

@@ -8,7 +8,6 @@ angular.module('user.controllers', [])
         '$state', '$scope', 'UserService',   // <-- controller dependencies
         function ($state, $scope, UserService) {
 
-            debugger;
 
             // ng-model holding values from view/html
             $scope.creds = {
