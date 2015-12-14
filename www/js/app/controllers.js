@@ -57,6 +57,35 @@ angular.module('app.controllers', [])
                     alert("error logging in " + _error.debug);
                 })
             };
+
+            $scope.inventorySave = function (_user) {
+                UserService.currentUser().then(function (_user) {
+                    $scope.user = _user;
+                    $scope.save = [];
+                    var parameter = Parse.Object.extend("Inventory");
+                    var query = new Parse.Query(parameter);
+                    query.equalTo("username", $scope.user.attributes.username)
+                    query.find({
+                        success: function (results) {
+                            var object = results[0];
+                            console.log($scope);
+                            object.set("HP", parseInt($scope.combat[0].HP, 10));
+                            object.set("AC", parseInt($scope.combat[0].AC, 10));
+                            object.set("initiative", parseInt($scope.combat[0].Init, 10));
+                            object.set("Fortitude", parseInt($scope.combat[0].Fort, 10));
+                            object.set("Reflex", parseInt($scope.combat[0].Reflex, 10));
+                            object.set("Will", parseInt($scope.combat[0].Will, 10));
+                            object.set("BaseAttack", parseInt($scope.combat[0].BaseA, 10));
+                            object.set("Grapple", parseInt($scope.combat[0].Grapple, 10));
+                            object.set("Attack", $scope.combat[0].Attack);
+                            console.log(object)
+                            object.save();
+                            $state.go($state.current, {}, {});
+                        }
+                    });
+                });
+            };
+
        $scope.items = [];
        $scope.gear = [];
        
