@@ -176,7 +176,6 @@ angular.module('app.controllers', [])
                             var CombatObject = Parse.Object.extend("Combat");
                             var c = new CombatObject();
                             c.set("username", $scope.user.attributes.username);
-                            c.set("Attack", array);
                             c.save();
                         }
                         else {
