@@ -259,8 +259,8 @@ angular.module('app.controllers', [])
                     }, function (_error) {
                     alert("error logging in " + _error.debug);
                     })
-            	};
-	}])
+                };
+    }])
 
     .controller('InventoryCtrl', [
         '$state', '$scope', 'UserService', '$ionicPopup',
@@ -331,22 +331,22 @@ angular.module('app.controllers', [])
                        e.preventDefault();
                     } else{
                       return $scope.data;
-                   }
-                   }
+                    }
+               }
                },
                ]
            });
            mypop.then(function(res){
                if(res){
-               if(res.type == 1){
-                   $scope.items.push(res);
-               } else if(res.type==2){
-                   $scope.gear.push(res);
-               } 
-               }   
+                   if(res.type == 1){
+                       $scope.items.push(res);
+                   } else if(res.type==2){
+                       $scope.gear.push(res);
+                   }
+               }
            });
        };
    }]
 );
-	
+    
 
