@@ -72,17 +72,16 @@ angular.module('starter',
                     }
                 }
             })
-            .state('tab.account', {
-                url: '/account',
-                cache: false,
-                views: {
-                    'tab-account': {
-                        templateUrl: 'templates/tab-account.html',
-                        controller: 'AccountCtrl'
-                    }
-                }
-            })
-
+	    .state('tab.special', {
+		url: '/abilities',
+		cache: false,
+		views: {
+		    'tab-special': {
+			templateUrl: 'templates/special-abilities.html',
+			controller: 'SpecialCtrl'
+		    }
+		}
+	    })
              .state('tab.combat', {
                  url: '/combat',
                  cache: false,
@@ -92,7 +91,17 @@ angular.module('starter',
                          controller: 'CombatCtrl'
                      }
                  }
-             });
+             })
+        .state('tab.inventory', {
+        url: '/inventory',
+        cache: false,
+        views: {
+            'tab-inventory': {
+            templateUrl: 'templates/tab-inventory.html',
+            controller: 'InventoryCtrl'
+            }
+        }
+        });
 
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/tab/character');

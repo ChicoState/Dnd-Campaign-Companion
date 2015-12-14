@@ -95,7 +95,6 @@ angular.module('app.controllers', [])
                     query.equalTo("username", $scope.user.attributes.username)
                     query.find({
                         success: function (results) {
-                            console.log($scope.character[0]);
                             var object = results[0];
                             object.set("characterName", $scope.character[0].characterName);
                             object.set("race", $scope.character[0].race);
@@ -127,11 +126,8 @@ angular.module('app.controllers', [])
 
                     // transition to next state
                     $state.go('app-login');
-
-                }, function (_error) {
-                    alert("error logging in " + _error.debug);
-                })
-            };
+            })
+        }; 
 
             $scope.combatSave = function (_user) {
                 UserService.currentUser().then(function (_user) {
@@ -143,7 +139,6 @@ angular.module('app.controllers', [])
                     query.find({
                         success: function (results) {
                             var object = results[0];
-                            console.log($scope);
                             object.set("HP", parseInt($scope.combat[0].HP, 10));
                             object.set("AC", parseInt($scope.combat[0].AC, 10));
                             object.set("initiative", parseInt($scope.combat[0].Init, 10));
@@ -159,7 +154,6 @@ angular.module('app.controllers', [])
                             object.set("Range", $scope.combat[0].Range);
                             object.set("Type", $scope.combat[0].Type);
                             object.set("Notes", $scope.combat[0].Notes);
-                            console.log(object);
                             object.save();
                             $state.go($state.current, {}, {});
                         }
@@ -173,7 +167,6 @@ angular.module('app.controllers', [])
                 var combat = Parse.Object.extend("Combat");
                 var query = new Parse.Query(combat);
 
-                console.log($scope.user.attributes.username);
 
                 query.equalTo("username", $scope.user.attributes.username);
 
@@ -187,10 +180,7 @@ angular.module('app.controllers', [])
                             c.save();
                         }
                         else {
-                            console.log("success achieved");
-                            console.log(results);
                             var object = results[0];
-                            console.log(object);
                             $scope.combat.push({
                                 HP: object.attributes.HP,
                                 AC: object.attributes.AC,
@@ -209,7 +199,6 @@ angular.module('app.controllers', [])
                                 
                             });
                         }
-                        console.log($scope.combat[0]);
                         $state.go($state.current, {}, {});
                     },
                     error: function (error) {
@@ -217,4 +206,147 @@ angular.module('app.controllers', [])
                     }
             });
         });
-    }]);
+    }])
+    .controller('SpecialCtrl', [
+        '$state', '$scope', 'UserService', '$ionicPopup',
+    function ($state, $scope, UserService, $ionicPopup){
+        $scope.abil = [];
+        $scope.feats = [];
+        $scope.spells = []; 
+        
+        UserService.currentUser().then(function(_user) {
+            $scope.user = _user;
+        });
+        $scope.abiladd = function(type) {
+            $scope.data = {type}
+            var mypop =
+            $ionicPopup.show({
+                template: 'Title: <input type="text" ng-model="data.title"> <br> Description: <textarea name="desc" cols="40" rows="5" maxlength="200" ng-model="data.description" style="height: 130px; min-height:130px; max-height:130px;">',
+                title: 'Add Ability',
+                cssClass: 'addAbil',
+                scope: $scope,
+                buttons: [
+                {text: 'Cancel' },
+                {text: 'Save',
+                 type: 'button-positive',
+                 onTap: function(e) {
+                    if((!$scope.data.title)||(!$scope.data.description)){
+                        e.preventDefault();
+                        } else{
+                            return $scope.data;
+                        }
+                    }
+                },
+                ]
+            });
+            mypop.then(function(res){
+                if(res){
+                    if(res.type == 1){
+                        $scope.spells.push(res);
+                    } else if(res.type==2){
+                        $scope.feats.push(res);
+                    } else if(res.type==3){
+                        $scope.abil.push(res);
+                    }
+                }
+            });
+        };
+        $scope.doLogoutAction = function () {
+            UserService.logout().then(function () {
+
+                        // transition to next state
+                        $state.go('app-login');
+                    }, function (_error) {
+                    alert("error logging in " + _error.debug);
+                    })
+                };
+    }])
+
+    .controller('InventoryCtrl', [
+        '$state', '$scope', 'UserService', '$ionicPopup',
+   function ($state, $scope, UserService, $ionicPopup){
+       UserService.currentUser().then(function(_user) {
+           $scope.user = _user;
+       });
+       $scope.doLogoutAction = function () {
+                UserService.logout().then(function () {
+
+                    // transition to next state
+                    $state.go('app-login');
+
+                }, function (_error) {
+                    alert("error logging in " + _error.debug);
+                })
+            };
+
+            $scope.inventorySave = function (_user) {
+                UserService.currentUser().then(function (_user) {
+                    $scope.user = _user;
+                    $scope.save = [];
+                    var parameter = Parse.Object.extend("Inventory");
+                    var query = new Parse.Query(parameter);
+                    query.equalTo("username", $scope.user.attributes.username)
+                    query.find({
+                        success: function (results) {
+                            var object = results[0];
+                            console.log($scope);
+                            object.set("HP", parseInt($scope.combat[0].HP, 10));
+                            object.set("AC", parseInt($scope.combat[0].AC, 10));
+                            object.set("initiative", parseInt($scope.combat[0].Init, 10));
+                            object.set("Fortitude", parseInt($scope.combat[0].Fort, 10));
+                            object.set("Reflex", parseInt($scope.combat[0].Reflex, 10));
+                            object.set("Will", parseInt($scope.combat[0].Will, 10));
+                            object.set("BaseAttack", parseInt($scope.combat[0].BaseA, 10));
+                            object.set("Grapple", parseInt($scope.combat[0].Grapple, 10));
+                            object.set("Attack", $scope.combat[0].Attack);
+                            console.log(object)
+                            object.save();
+                            $state.go($state.current, {}, {});
+                        }
+                    });
+                });
+            };
+
+       $scope.items = [];
+       $scope.gear = [];
+       
+       
+       $scope.shouldShowDelete = true;
+       $scope.listCanSwipe = true; 
+       
+       $scope.itemadd = function(type) {
+           $scope.data = {type}
+           var mypop =
+           $ionicPopup.show({
+               template: 'Title: <input type="text" ng-model="data.title"> <br> Description: <textarea name="desc" cols="40" rows="5" maxlength="200" ng-model="data.description" style="height: 130px; min-height:130px; max-height:130px;">',
+               title: 'Add Item',
+               cssClass: 'addAbil',
+               scope: $scope,
+               buttons: [
+               {text: 'Cancel' },
+               {text: 'Save',
+                type: 'button-positive',
+                onTap: function(e) {
+                   if((!$scope.data.title)||(!$scope.data.description)){
+                       e.preventDefault();
+                    } else{
+                      return $scope.data;
+                    }
+               }
+               },
+               ]
+           });
+           mypop.then(function(res){
+               if(res){
+                   if(res.type == 1){
+                       $scope.items.push(res);
+                   } else if(res.type==2){
+                       $scope.gear.push(res);
+                   }
+               }
+           });
+       };
+   }]
+);
+    
+
