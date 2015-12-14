@@ -72,17 +72,16 @@ angular.module('starter',
                     }
                 }
             })
-            .state('tab.account', {
-                url: '/account',
-                cache: false,
-                views: {
-                    'tab-account': {
-                        templateUrl: 'templates/tab-account.html',
-                        controller: 'AccountCtrl'
-                    }
-                }
-            })
-
+	    .state('tab.special', {
+		url: '/abilities',
+		cache: false,
+		views: {
+		    'tab-special': {
+			templateUrl: 'templates/special-abilities.html',
+			controller: 'SpecialCtrl'
+		    }
+		}
+	    })
              .state('tab.combat', {
                  url: '/combat',
                  cache: false,
