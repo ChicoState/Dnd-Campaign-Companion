@@ -63,32 +63,12 @@ angular.module('starter',
             })
 
             // Each tab has its own nav history stack:
-            .state('tab.list', {
-                url: '/list',
+            .state('tab.character', {
+                url: '/character',
                 views: {
-                    'tab-list': {
-                        templateUrl: 'templates/tab-list.html',
-                        controller: 'ListCtrl'
-                    }
-                }
-            })
-            .state('tab.list-detail', {
-                url: '/list/:itemId',
-                views: {
-                    'tab-list': {
-                        templateUrl: 'templates/list-detail.html',
-                        controller: 'ListDetailCtrl'
-                    }
-                }
-            })
-
-            .state('tab.account', {
-                url: '/account',
-                cache: false,
-                views: {
-                    'tab-account': {
-                        templateUrl: 'templates/tab-account.html',
-                        controller: 'AccountCtrl'
+                    'tab-character': {
+                        templateUrl: 'templates/tab-character.html',
+                        controller: 'CharacterCtrl'
                     }
                 }
             })
@@ -101,10 +81,20 @@ angular.module('starter',
 			controller: 'SpecialCtrl'
 		    }
 		}
-	    });
+	    })
+             .state('tab.combat', {
+                 url: '/combat',
+                 cache: false,
+                 views: {
+                     'tab-combat': {
+                         templateUrl: 'templates/tab-combat.html',
+                         controller: 'CombatCtrl'
+                     }
+                 }
+             });
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/tab/abilities');
+        $urlRouterProvider.otherwise('/tab/character');
 
     })
     .run(function ($ionicPlatform, $rootScope, $state) {
@@ -112,8 +102,6 @@ angular.module('starter',
 
         $rootScope.$on('$stateChangeError',
             function (event, toState, toParams, fromState, fromParams, error) {
-
-                debugger;
 
                 console.log('$stateChangeError ' + error && (error.debug || error.message || error));
 
