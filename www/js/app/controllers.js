@@ -95,7 +95,6 @@ angular.module('app.controllers', [])
                     query.equalTo("username", $scope.user.attributes.username)
                     query.find({
                         success: function (results) {
-                            console.log($scope.character[0]);
                             var object = results[0];
                             object.set("characterName", $scope.character[0].characterName);
                             object.set("race", $scope.character[0].race);
@@ -140,7 +139,6 @@ angular.module('app.controllers', [])
                     query.find({
                         success: function (results) {
                             var object = results[0];
-                            console.log($scope);
                             object.set("HP", parseInt($scope.combat[0].HP, 10));
                             object.set("AC", parseInt($scope.combat[0].AC, 10));
                             object.set("initiative", parseInt($scope.combat[0].Init, 10));
@@ -156,7 +154,6 @@ angular.module('app.controllers', [])
                             object.set("Range", $scope.combat[0].Range);
                             object.set("Type", $scope.combat[0].Type);
                             object.set("Notes", $scope.combat[0].Notes);
-                            console.log(object);
                             object.save();
                             $state.go($state.current, {}, {});
                         }
@@ -170,7 +167,6 @@ angular.module('app.controllers', [])
                 var combat = Parse.Object.extend("Combat");
                 var query = new Parse.Query(combat);
 
-                console.log($scope.user.attributes.username);
 
                 query.equalTo("username", $scope.user.attributes.username);
 
@@ -184,10 +180,7 @@ angular.module('app.controllers', [])
                             c.save();
                         }
                         else {
-                            console.log("success achieved");
-                            console.log(results);
                             var object = results[0];
-                            console.log(object);
                             $scope.combat.push({
                                 HP: object.attributes.HP,
                                 AC: object.attributes.AC,
@@ -206,7 +199,6 @@ angular.module('app.controllers', [])
                                 
                             });
                         }
-                        console.log($scope.combat[0]);
                         $state.go($state.current, {}, {});
                     },
                     error: function (error) {
